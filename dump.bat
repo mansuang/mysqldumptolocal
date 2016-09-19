@@ -24,7 +24,7 @@ mysqldump -h %remote_host% -u %remote_user% -p"%remote_password%" %remote_databa
 	mysql -uroot -e"CREATE DATABASE %tableName%"
 
 	echo STEP 3 of 6 :backing up database.
-	mysqldump -u %local_user% %local_database_prefix% | mysql -uroot %tableName%
+	mysqldump -u %local_user% %local_database_prefix% | mysql -u %local_user% %tableName%
 
 	echo STEP 4 of 6 :drop database %local_database_prefix%.
 	mysql -u %local_user% -e"DROP DATABASE %local_database_prefix%;"
