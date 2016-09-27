@@ -21,7 +21,7 @@ echo STEP 1 of 6 :dumping database to %tableName%.sql. Please Wait.
 mysqldump -h %remote_host% -u %remote_user% -p"%remote_password%" %remote_database% > %tableName%.sql && (
 
 	echo STEP 2 of 6 :create backup database.
-	mysql -uroot -e"CREATE DATABASE %tableName%"
+	mysql -u %local_user% -e"CREATE DATABASE %tableName%"
 
 	echo STEP 3 of 6 :backing up database.
 	mysqldump -u %local_user% %local_database_prefix% | mysql -u %local_user% %tableName%
